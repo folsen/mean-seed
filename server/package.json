@@ -1,0 +1,23 @@
+{
+  "name": "mean-seed",
+  "version": "0.0.1",
+  "author": "Fredrik <ique@3h.se>",
+  "description": "A seed application for the MEAN stack.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ique/mean-seed.git"
+  },
+  "keywords": [
+    "mean",
+    "mongo",
+    "seed"
+  ],
+  "dependencies" : {
+    "mongoose" :  "3.6.x",
+    "express"  :  "3.2.x"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.6"
+  }
+}
