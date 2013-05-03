@@ -3,9 +3,14 @@ var path     = require('path'),
     app      = express(),
     mongoose = require('mongoose');
 
-mongoose.connect('mongodb://'+process.env.MONGOLABUSR+':'+process.env.MONGOLABPW+'@ds061767.mongolab.com:61767/cloud9test');
+var dbusr = process.env.MONGOLABUSR,
+    dbpw  = process.env.MONGOLABPW,
+    db    = process.env.MONGOLABDB;
 
+mongoose.connect('mongodb://'+dbusr+':'+dbpw+'@ds061767.mongolab.com:61767/'+db);
 
+// Apparently needs to be used in such that req.body automatically gets parsed
+// properly.
 app.use(express.bodyParser());
 
 // First looks for a static file: index.html, css, images, etc.
@@ -16,14 +21,14 @@ app.use("/app", function(req, res, next) {
 });
 app.use(express.logger()); // Log requests to the console
 
-// Setup models and controllers
+// Setup models and controllers.
 // Both Model and Controller is kept in same file for simplicity sake
 var users = require('./controllers/users');
 users.setup(app, mongoose);
 
-// This route deals enables HTML5Mode by forwarding missing files to the index.html
+// This is the route that sends the base index.html file all other routes are
+// for data only, no server-side views here.
 app.all('/', function(req, res) {
-  //Just send the index.html for other files to support HTML5Mode
   res.sendfile('index.html', { root: "../app" });
 });
 

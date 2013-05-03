@@ -2,6 +2,9 @@ exports.setup = function(app, mongoose) {
 
   var User = mongoose.model('User', { name: String, story: String });
 
+  // The routes below define what is used by AngularJS's ngResource module for
+  // automatic backend resource management.
+
   // query
   app.get('/users', function(req, res) {
     User.find({}, function(err, docs) {
