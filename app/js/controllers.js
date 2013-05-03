@@ -8,7 +8,7 @@ angular.module('myApp.controllers', []).
 
     $scope.addUser = function() {
       var user = new User({name: $scope.newUser.name});
-      user.$save(); // This gets the object the server responded with
+      user.$save();
       $scope.users.push(user);
       $scope.newUser = "";
     }
