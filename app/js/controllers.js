@@ -3,14 +3,35 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('UserCtrl', function($scope, users) {
-    $scope.users = users;
+  controller('UserCtrl', function($scope, User) {
+    $scope.users = User.query();
+
     $scope.addUser = function() {
-      users.push({name: $scope.newUser.name });
+      var user = new User({name: $scope.newUser.name});
+      user.$save(); // This gets the object the server responded with
+      $scope.users.push(user);
       $scope.newUser = "";
     }
+    $scope.showStory = function(user) {
+      User.get({userId: user._id}, function(user){
+        $scope.showUser = user;
+      });
+    }
+    $scope.hideStory = function() {
+      $scope.showUser = null;
+    }
+    $scope.removeUser = function(user) {
+      User.remove({userId: user._id}, function() {
+        $scope.users = User.query();
+        $scope.showUser = null;
+      });
+    }
+    $scope.updateUser = function(user) {
+      user.$save({userId: user._id});
+      $scope.showUser = null;
+    }
   })
-  .controller('AboutCtrl', function($scope, users) {
+  .controller('AboutCtrl', function($scope) {
 
   })
   .controller('NavCtrl', function($scope, $location) {

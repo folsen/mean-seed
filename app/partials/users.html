@@ -23,7 +23,23 @@
   <div class="span6">
     <h4>Users</h4>
     <ul>
-      <li ng-repeat="user in users">{{ user.name }}</li>
+      <li ng-repeat="user in users">
+        <a href="" ng-click="showStory(user)">{{ user.name }}</a>
+      </li>
     </ul>
+    <div class="well" ng-show="showUser">
+      <a href="" style="float:right;" ng-click="hideStory()">Close</a>
+      <h3>The story about</h3>
+      <input type="text" ng-model="showUser.name">
+      <input type="textarea" ng-model="showUser.story">
+      <div>
+        <a href="" ng-click="removeUser(showUser)">
+          Remove
+        </a>
+        <a href="" ng-click="updateUser(showUser)">
+          Update
+        </a>
+      </div>
+    </div>
   </div>
 </div>

@@ -2,10 +2,7 @@
 
 /* Services */
 
-
-// Demonstrate how to register services
-// In this case it is a simple value service.
-angular.module('myApp.services', [])
-  .factory("users", function() {
-    return [{name: "Fredrik"}];
+angular.module('myApp.services', ['ngResource'])
+  .factory("User", function($resource) {
+    return $resource('/users/:userId', {userId: '@id'})
   });
