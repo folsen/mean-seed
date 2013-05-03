@@ -1,0 +1,29 @@
+<div class="jumbotron">
+  <h1>Awesome app!</h1>
+  <p class="lead">
+    Revolutionize, disrupt and change the world in 12 hours.
+  </p>
+</div>
+
+<hr>
+
+<div class="row-fluid marketing">
+  <div class="span6">
+    <h4>Add User</h4>
+    <form>
+      <div class="control-group">
+        <label class="control-label">User Name</label>
+        <div class="controls">
+          <input type="text" ng-model="newUser.name">
+        </div>
+      </div>
+      <input type="submit" ng-click="addUser()" class="btn btn-primary">
+    </form>
+  </div>
+  <div class="span6">
+    <h4>Users</h4>
+    <ul>
+      <li ng-repeat="user in users">{{ user.name }}</li>
+    </ul>
+  </div>
+</div>

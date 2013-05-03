@@ -1,28 +1,73 @@
 <!doctype html>
 <html lang="en" ng-app="myApp">
-<head>
-  <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
-</head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+  <head>
+    <meta charset="utf-8">
+    <title>My AngularJS App</title>
+    <link rel="stylesheet" href="app/vendor/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="app/css/app.css"/>
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
 
-  <div ng-view></div>
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
 
-  <div>Angular seed app: v<span app-version></span></div>
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 14px 24px;
+      }
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-  -->
-  <script src="app/lib/angular/angular.js"></script>
-  <script src="app/js/app.js"></script>
-  <script src="app/js/services.js"></script>
-  <script src="app/js/controllers.js"></script>
-  <script src="app/js/filters.js"></script>
-  <script src="app/js/directives.js"></script>
-</body>
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right" ng-controller="NavCtrl">
+          <li ng-class="isActive('/users')"><a href="#/users">Users</a></li>
+          <li ng-class="isActive('/about')"><a href="#/about">About</a></li>
+        </ul>
+        <h3 class="muted">Project name</h3>
+      </div>
+
+      <hr>
+
+      <div ng-view>
+      </div>
+    </div>
+
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    -->
+    <script src="app/vendor/js/angular/angular.js"></script>
+    <script src="app/js/app.js"></script>
+    <script src="app/js/services.js"></script>
+    <script src="app/js/controllers.js"></script>
+    <script src="app/js/filters.js"></script>
+    <script src="app/js/directives.js"></script>
+  </body>
 </html>

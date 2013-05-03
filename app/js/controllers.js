@@ -3,9 +3,21 @@
 /* Controllers */
 
 angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
+  controller('UserCtrl', function($scope, users) {
+    $scope.users = users;
+    $scope.addUser = function() {
+      users.push({name: $scope.newUser.name });
+      $scope.newUser = "";
+    }
+  })
+  .controller('AboutCtrl', function($scope, users) {
 
-  }])
-  .controller('MyCtrl2', [function() {
+  })
+  .controller('NavCtrl', function($scope, $location) {
+    // this toggles the 'active' class on/off in the navbar
+    $scope.isActive = function(path) {
+      var current = $location.path();
+      return path === current ? 'active' : '';
+    };
+  });
 
-  }]);
